@@ -9,6 +9,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'activeadmin', github: 'activeadmin/activeadmin'
+gem 'draper'
 
 group :development, :test do
   gem 'web-console', '~> 2.0'
