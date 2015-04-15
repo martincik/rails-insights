@@ -8,6 +8,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
+gem 'activeadmin', github: 'activeadmin/activeadmin'
 
 group :development, :test do
   gem 'web-console', '~> 2.0'
