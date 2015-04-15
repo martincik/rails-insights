@@ -1,0 +1,48 @@
+weworkremotely.com:
+  name: We Work Remotely
+  url: https://weworkremotely.com
+jobs.github.com:
+  name: GitHub Jobs
+  url: https://jobs.github.com
+careers.stackoverflow.com:
+  name: Stack Overflow Careers
+  url: http://careers.stackoverflow.com
+railsjobs.com:
+  name: RailsJobs
+  url: http://www.railsjobs.com
+rubynow.com:
+  name: RubyNow Jobs
+  url: http://jobs.rubynow.com
+indeed.com:
+  name: indeed
+  url: http://www.indeed.com
+linkedin.com:
+  name: LinkedIn
+  url: https://www.linkedin.com
+jobsremotely.com:
+  name: JobsRemotely.com
+  url: https://jobsremotely.com
+odesk.com:
+  name: oDesk
+  url: https://www.odesk.com
+freelancer.com:
+  name: freelancer.com
+  url: https://www.freelancer.com
+monster.com:
+  name: Monster
+  url: http://www.monster.com
+glassdoor.com:
+  name: Glassdoor
+  url: http://www.glassdoor.com
+simplyhired.com:
+  name: Simply Hired
+  url: http://www.simplyhired.com
+krop.com:
+  name: Krop
+  url: http://www.krop.com
+careerbuilder.co.uk:
+  name: Career Builder
+  url: http://www.careerbuilder.co.uk
+rubyweekly.com:
+  name: RubyWeekly Newsletter
+  url: http://rubyweekly.com
