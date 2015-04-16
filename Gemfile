@@ -1,5 +1,6 @@
 ruby '2.1.5'
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 
 gem 'rails', '~> 4.2'
 gem 'pg'
@@ -10,6 +11,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'draper'
+
+gem 'rails-assets-selectize'
 
 group :development, :test do
   gem 'web-console', '~> 2.0'
