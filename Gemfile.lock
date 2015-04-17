@@ -97,6 +97,7 @@ GEM
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
     hirb (0.7.3)
+    htmlentities (4.3.3)
     i18n (0.7.0)
     inherited_resources (1.6.0)
       actionpack (>= 3.2, < 5)
@@ -216,6 +217,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   draper
   hirb
+  htmlentities
   jquery-rails
   letter_opener
   pg
