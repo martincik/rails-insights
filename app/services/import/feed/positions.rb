@@ -6,6 +6,10 @@ module Import
   module Feed
 
     class Positions
+      class Sanitizer
+        include ActionView::Helpers::SanitizeHelper
+      end
+
       def initialize(feed_url)
         @feed_url = feed_url
       end
@@ -35,8 +39,15 @@ module Import
         @feed ||= open(@feed_url).read
       end
 
+      def sanitizer
+        @sanitizer ||= Sanitizer.new
+      end
+
+      private
+
+      #  scrub text of undesired HTML elements
       def sanitize(text)
-        HTMLEntities.new.decode(text).squish.strip
+        HTMLEntities.new.decode(sanitizer.strip_tags(text)).squish.strip
       end
     end
 
