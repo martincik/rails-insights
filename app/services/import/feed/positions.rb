@@ -16,7 +16,8 @@ module Import
             position = Position.where(url: item.link).first_or_initialize
             if position.new_record?
               position.title = sanitize(item.title)
-              position.description = sanitize(item.description)
+              position.description_text = sanitize(item.description)
+              position.description_html = item.description
               position.posted_at = item.date
               position.save! if position.title.present? && position.description.present?
             end

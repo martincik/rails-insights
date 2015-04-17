@@ -5,7 +5,8 @@ class CreatePositions < ActiveRecord::Migration
       t.references :company, index: true
       t.references :portal, index: true
       t.string :title
-      t.text :description
+      t.text :description_html
+      t.text :description_text
       t.text :how_to_apply
       t.string :url
       t.string :location
