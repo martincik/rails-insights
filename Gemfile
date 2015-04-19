@@ -11,8 +11,10 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'draper'
+gem 'state_machine'
 gem 'htmlentities'
 
+# asset gems
 gem 'rails-assets-selectize'
 
 group :development, :test do
