@@ -23,7 +23,7 @@ module Import
               position.description_text = sanitize(item.description)
               position.description_html = item.description
               position.posted_at = item.date
-              position.save! if position.title.present? && position.description.present?
+              position.save(validate: false)
             end
           end
         end
