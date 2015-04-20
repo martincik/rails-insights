@@ -3,6 +3,9 @@
 # Version of your assets, change this if you want to expire all your assets.
 Rails.application.config.assets.version = '1.0'
 
+# Force application to not access the DB or load models when precompiling your assets (important for Heroku)
+Rails.application.config.assets.initialize_on_precompile = false
+
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 
