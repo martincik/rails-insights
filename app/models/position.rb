@@ -1,3 +1,27 @@
+# == Schema Information
+#
+# Table name: positions
+#
+#  id               :integer          not null, primary key
+#  identifier       :string
+#  company_id       :integer          indexed
+#  portal_id        :integer          indexed
+#  title            :string
+#  description_html :text
+#  description_text :text
+#  how_to_apply     :text
+#  url              :string
+#  location         :string
+#  salary           :string
+#  state            :string
+#  kind             :string
+#  type             :string
+#  posted_at        :datetime
+#  synchronized_at  :datetime
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
 class Position < ActiveRecord::Base
   belongs_to :company
   belongs_to :portal
