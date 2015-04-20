@@ -24,6 +24,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'thin'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'quiet_assets'
@@ -33,5 +34,6 @@ group :development do
 end
 
 group :production, :staging do
+  gem 'unicorn'
   gem 'rails_12factor'
 end
