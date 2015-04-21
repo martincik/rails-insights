@@ -4,5 +4,5 @@ ActiveAdmin.register Company do
   menu priority: 20
   actions :all, except: [:new]
 
-  permit_params :name, :homepage_url, :logo_url
+  permit_params :name, :homepage_domain, :homepage_url, :logo_url
 end
