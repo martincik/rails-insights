@@ -6,6 +6,10 @@ ActiveAdmin.register Position do
 
   permit_params :identifier, :company_id, :portal_id, :title, :description, :how_to_apply, :url, :location, :salary, :kind, :type, :posted_at, :synchronized_at
 
+  scope :all, default: true
+  scope :pending      do |positions| positions.with_state(Position::STATE_PENDING) end
+  scope :synchronized do |positions| positions.with_state(Position::STATE_SYNCHRONIZED) end
+
   index do
     selectable_column
     column :id do |position| auto_link position, position.id end
@@ -16,6 +20,7 @@ ActiveAdmin.register Position do
     column :url
     column :location
     column :salary
+    column :state
     column :kind
     column :type
     column :posted_at
