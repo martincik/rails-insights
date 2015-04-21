@@ -18,6 +18,6 @@ class Portal < ActiveRecord::Base
   before_validation :assign_domain
 
   def assign_domain
-    self.domain = URI.parse(url).host if url.present?
+    self.domain = URI.parse(url).host.sub(/^www\./, '') if url.present?
   end
 end
