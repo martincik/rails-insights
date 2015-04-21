@@ -11,6 +11,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'draper'
+gem 'enumerize'
 gem 'state_machine'
 gem 'htmlentities'
 

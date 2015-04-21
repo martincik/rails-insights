@@ -23,10 +23,24 @@
 #
 
 class Position < ActiveRecord::Base
+  extend Enumerize
+
+  STATE_PENDING = 'pending'
+  STATE_SYNCHRONIZED = 'synchronized'
+
+  def self.states
+    [STATE_PENDING, STATE_SYNCHRONIZED]
+  end
+
+  enumerize :state, in: states, default: STATE_PENDING, predicates: false, scope: true
+
+
+  alias_attribute :description, :description_text
+
+
   belongs_to :company
   belongs_to :portal
 
-  alias_attribute :description, :description_text
 
   state_machine initial: :pending do
     state :pending
