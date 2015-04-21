@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20150414143042) do
   create_table "portals", force: :cascade do |t|
     t.string   "name"
     t.string   "url"
+    t.string   "domain"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
