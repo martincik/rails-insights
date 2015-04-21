@@ -13,7 +13,7 @@
 #  url              :string
 #  location         :string
 #  salary           :string
-#  state            :string
+#  state            :string           default("pending")
 #  kind             :string
 #  type             :string
 #  posted_at        :datetime

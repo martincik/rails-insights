@@ -44,13 +44,13 @@ ActiveRecord::Schema.define(version: 20150414143042) do
     t.string   "url"
     t.string   "location"
     t.string   "salary"
-    t.string   "state"
+    t.string   "state",            default: "pending"
     t.string   "kind"
     t.string   "type"
     t.datetime "posted_at"
     t.datetime "synchronized_at"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   add_index "positions", ["company_id"], name: "index_positions_on_company_id", using: :btree
