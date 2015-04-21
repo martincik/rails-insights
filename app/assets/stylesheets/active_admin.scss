@@ -16,6 +16,11 @@
 @import "active_admin/selectize";
 
 // Overriding any non-variable SASS must be done after the fact.
-// For example, to change the default status-tag color:
-//
-//   .status_tag { background: #6090DB; }
+
+.hidden { display: none }
+
+.status_tag {
+  // &.running { background: #d45f53 } // red
+  // &.pending { background: #e29b20 } // orange
+  &.synchronized { background: #8daa92 } // green
+}
