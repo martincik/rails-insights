@@ -42,17 +42,17 @@ class Position < ActiveRecord::Base
   belongs_to :portal
 
 
-  state_machine initial: :pending do
-    state :pending
-    state :synchronized
+  state_machine initial: STATE_PENDING do
+    state STATE_PENDING
+    state STATE_SYNCHRONIZED
 
     event :synchronize
     event :reset
 
-    transition on: :synchronize, from: :pending, to: :synchronized
-    transition on: :reset, from: any, to: :pending
+    transition on: :synchronize, from: STATE_PENDING, to: STATE_SYNCHRONIZED
+    transition on: :reset, from: any, to: STATE_PENDING
 
-    after_transition on: :synchronize do |p| p.synchronized_at = Time.zone.now end
-    after_transition on: :reset       do |p| p.synchronized_at = nil end
+    before_transition on: :synchronize do |p| p.synchronized_at = Time.zone.now end
+    before_transition on: :reset       do |p| p.synchronized_at = nil end
   end
 end
