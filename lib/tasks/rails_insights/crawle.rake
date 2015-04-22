@@ -1,10 +1,10 @@
 namespace 'rails_insights' do
 
   namespace :crawle do
-    desc 'Import data from RSS feed'
+    desc 'Import model details using crawler'
     task all: [:positions] # list of tasks to run
 
-    desc 'Import positions from RSS feed'
+    desc 'Import position details using crawler'
     task positions: :environment do
       verbose = ENV['VERBOSE'].present?
       logger  = Rails.logger
@@ -13,13 +13,13 @@ namespace 'rails_insights' do
         begin
           crawler = Crawler::Position::Factory.new(position.domain).instance(position)
           crawler.run
-          print '.' if verbose
+          logger.info '.' if verbose
         rescue Crawler::UnknownPortalError, Crawler::UnknownCrawlerError => e
-          print 'x' if verbose
+          logger.info 'x' if verbose
           logger.debug e.message
         end
       end
-      puts 'DONE.' if verbose
+      logger.info 'DONE.' if verbose
     end
   end
 
