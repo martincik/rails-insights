@@ -2,12 +2,13 @@
 #
 # Table name: portals
 #
-#  id         :integer          not null, primary key
-#  name       :string
-#  url        :string
-#  domain     :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id            :integer          not null, primary key
+#  name          :string
+#  url           :string
+#  domain        :string
+#  crawler_class :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
 #
 
 class Portal < ActiveRecord::Base
@@ -19,5 +20,9 @@ class Portal < ActiveRecord::Base
 
   def assign_domain
     self.domain = URI.parse(url).host.sub(/^www\./, '') if url.present?
+  end
+
+  def crawler
+    @crawler ||= crawler_class.safe_constantize.new
   end
 end

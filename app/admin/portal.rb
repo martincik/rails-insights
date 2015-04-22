@@ -4,7 +4,7 @@ ActiveAdmin.register Portal do
   menu priority: 10
   actions :all
 
-  permit_params :name, :url, :domain
+  permit_params :name, :url, :domain, :crawler_class
 
   index do
     selectable_column

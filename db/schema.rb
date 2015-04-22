@@ -29,8 +29,9 @@ ActiveRecord::Schema.define(version: 20150414143042) do
     t.string   "name"
     t.string   "url"
     t.string   "domain"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "crawler_class"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "positions", force: :cascade do |t|

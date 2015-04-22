@@ -4,6 +4,7 @@ class CreatePortals < ActiveRecord::Migration
       t.string :name
       t.string :url
       t.string :domain
+      t.string :crawler_class
 
       t.timestamps null: false
     end
