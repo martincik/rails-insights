@@ -1,12 +1,15 @@
 weworkremotely.com:
   name: We Work Remotely
   url: https://weworkremotely.com
+  crawler_class: "crawler/position/weworkremotely"
 jobs.github.com:
   name: GitHub Jobs
   url: https://jobs.github.com
+  crawler_class: "crawler/position/github_jobs"
 careers.stackoverflow.com:
   name: Stack Overflow Careers
   url: http://careers.stackoverflow.com
+  crawler_class: "crawler/position/stack_overflow_careers"
 railsjobs.com:
   name: RailsJobs
   url: http://www.railsjobs.com

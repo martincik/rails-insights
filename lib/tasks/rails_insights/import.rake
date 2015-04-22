@@ -9,8 +9,8 @@ namespace 'rails_insights' do
       desc 'Import positions from RSS feed'
       task positions: :environment do
         feed_url = Rails.application.secrets.import_feed_url.presence
-        service = Import::Feed::Positions.new(feed_url)
-        service.run
+        import = Import::Feed::Positions.new(feed_url)
+        import.run
       end
     end
 
