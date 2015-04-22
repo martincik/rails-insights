@@ -49,15 +49,20 @@ class Position < ActiveRecord::Base
     event :synchronize
     event :reset
 
-    transition on: :synchronize, from: STATE_PENDING, to: STATE_SYNCHRONIZED
+    transition on: :synchronize, from: [STATE_PENDING, STATE_SYNCHRONIZED], to: STATE_SYNCHRONIZED
     transition on: :reset, from: any, to: STATE_PENDING
 
-    before_transition on: :synchronize do |p| p.synchronized_at = Time.zone.now end
-    before_transition on: :reset       do |p| p.synchronized_at = nil end
+    before_transition on: :synchronize, do: :perform_synchronization
+    before_transition on: :synchronize  do |p| p.synchronized_at = Time.zone.now end
+    before_transition on: :reset        do |p| p.synchronized_at = nil end
   end
 
 
   def domain
     URI.parse(url).host.sub(/^www\./, '') if url.present?
+  end
+
+  def perform_synchronization
+    SyncPositionJob.perform_later(self)
   end
 end
