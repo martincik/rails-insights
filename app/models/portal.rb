@@ -21,8 +21,4 @@ class Portal < ActiveRecord::Base
   def assign_domain
     self.domain = URI.parse(url).host.sub(/^www\./, '') if url.present?
   end
-
-  def crawler
-    @crawler ||= crawler_class.safe_constantize.new
-  end
 end
