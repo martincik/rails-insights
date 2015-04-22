@@ -55,4 +55,9 @@ class Position < ActiveRecord::Base
     before_transition on: :synchronize do |p| p.synchronized_at = Time.zone.now end
     before_transition on: :reset       do |p| p.synchronized_at = nil end
   end
+
+
+  def domain
+    URI.parse(url).host.sub(/^www\./, '') if url.present?
+  end
 end
