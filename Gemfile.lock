@@ -90,7 +90,7 @@ GEM
       activemodel (>= 3.0)
       activesupport (>= 3.0)
       request_store (~> 1.0)
-    enumerize (0.8.0)
+    enumerize (0.11.0)
       activesupport (>= 3.2)
     erubis (2.7.0)
     eventmachine (1.0.7)
@@ -105,6 +105,9 @@ GEM
       activesupport (>= 3.2, < 5)
     hirb (0.7.3)
     htmlentities (4.3.3)
+    httparty (0.13.3)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     inherited_resources (1.6.0)
       actionpack (>= 3.2, < 5)
@@ -133,6 +136,7 @@ GEM
     mime-types (2.5)
     mini_portile (0.6.2)
     minitest (5.6.0)
+    multi_xml (0.5.5)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     pg (0.18.1)
@@ -243,8 +247,10 @@ DEPENDENCIES
   enumerize
   hirb
   htmlentities
+  httparty
   jquery-rails
   letter_opener
+  nokogiri
   pg
   quiet_assets
   rails (~> 4.2)

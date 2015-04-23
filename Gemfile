@@ -13,7 +13,9 @@ gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'draper'
 gem 'enumerize'
 gem 'state_machine'
-gem 'htmlentities'
+gem 'htmlentities', require: false
+gem 'httparty', require: false
+gem 'nokogiri', require: false
 
 # asset gems
 gem 'rails-assets-selectize'
