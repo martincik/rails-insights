@@ -30,26 +30,36 @@ ActiveAdmin.register Position do
     actions
   end
 
-  # /admin/positions/:id/synchronize
+
+  action_item :synchronize, only: [:show, :edit] do
+    link_to 'Synchronize', synchronize_admin_position_path(resource), method: :put if resource.can_synchronize?
+  end
+
   member_action :synchronize, method: :put do
     if resource.can_synchronize?
       resource.synchronize!
-      redirect_to :back, notice: I18n.t("flash.positions.synchronize.notice", count: 1)
+      redirect_to :back, notice: I18n.t('flash.positions.synchronize.notice', count: 1)
     else
-      redirect_to :back, alert: I18n.t("flash.positions.synchronize.alert", count: 1)
+      redirect_to :back, alert: I18n.t('flash.positions.synchronize.alert', count: 1)
     end
   end
 
   batch_action :synchronize do |ids|
     begin
       Position.where(id: ids).map(&:synchronize!)
-      redirect_to :back, notice: I18n.t("flash.positions.synchronize.notice", count: ids.count)
+      redirect_to :back, notice: I18n.t('flash.positions.synchronize.notice', count: ids.count)
     rescue StateMachine::InvalidTransition
-      redirect_to :back, alert: I18n.t("flash.positions.synchronize.alert", count: ids.count)
+      redirect_to :back, alert: I18n.t('flash.positions.synchronize.alert', count: ids.count)
     end
   end
 
-  action_item :synchronize, only: [:show, :edit] do
-    link_to("Synchronize", synchronize_admin_position_path(resource), method: :put) if resource.can_synchronize?
+  collection_action :synchronize, method: :put do
+    ids = Position.with_state(Position::STATE_PENDING).ids
+    begin
+      Position.where(id: ids).map(&:synchronize!)
+      redirect_to :back, notice: I18n.t('flash.positions.synchronize.notice', count: ids.count)
+    rescue StateMachine::InvalidTransition
+      redirect_to :back, alert: I18n.t('flash.positions.synchronize.alert', count: ids.count)
+    end
   end
 end
