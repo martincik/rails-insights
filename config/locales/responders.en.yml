@@ -12,6 +12,7 @@ en:
     positions:
       synchronize:
         notice:
+          zero: "Position is already synchronized."
           one: "Position was successfully synchronized."
           other: "%{count} positions were successfully synchronized."
         alert:
