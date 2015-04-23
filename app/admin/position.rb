@@ -53,8 +53,8 @@ ActiveAdmin.register Position do
     end
   end
 
-  collection_action :synchronize, method: :put do
-    ids = Position.with_state(Position::STATE_PENDING).ids
+  collection_action :crawle, method: :post do
+    ids = Position.with_state(Position::STATE_PENDING).limit(15).ids
     begin
       Position.where(id: ids).map(&:synchronize!)
       redirect_to :back, notice: I18n.t('flash.positions.synchronize.notice', count: ids.count)

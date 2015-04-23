@@ -7,7 +7,7 @@ ActiveAdmin.register_page "Dashboard" do
   end
 
   action_item :crawle do
-    link_to "Run crawler", synchronize_admin_positions_path, method: :put
+    link_to "Run crawler", crawle_admin_positions_path, method: :post
   end
 
   content title: proc { I18n.t("active_admin.dashboard") } do
