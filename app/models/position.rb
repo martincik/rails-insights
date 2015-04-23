@@ -38,7 +38,7 @@ class Position < ActiveRecord::Base
   alias_attribute :description, :description_text
 
 
-  belongs_to :company
+  belongs_to :company, autosave: true
   belongs_to :portal
 
 
