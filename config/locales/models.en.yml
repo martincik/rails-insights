@@ -66,6 +66,7 @@ en:
       company: &devise
         homepage_url: Homepage URL
         logo_url: Logo URL
+        logo_image: Logo
 
       portal:
         crawler_class: Crawler
