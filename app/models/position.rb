@@ -62,6 +62,11 @@ class Position < ActiveRecord::Base
     URI.parse(url).host.sub(/^www\./, '') if url.present?
   end
 
+  def kind=(value)
+    value = value.humanize.downcase if value.present?
+    write_attribute(:kind, value.presence)
+  end
+
   def perform_synchronization
     SyncPositionJob.perform_later(self)
   end

@@ -14,7 +14,7 @@
 class Company < ActiveRecord::Base
   has_many :positions
 
-  validates :name, :homepage_url, :homepage_domain, presence: true
+  validates :name, presence: true
 
   before_validation :assign_homepage_domain
 
