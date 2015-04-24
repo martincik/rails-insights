@@ -16,7 +16,7 @@ class Company < ActiveRecord::Base
 
   validates :name, presence: true
 
-  before_validation :assign_homepage_domain
+  before_save :assign_homepage_domain
 
   def assign_homepage_domain
     self.homepage_domain = URI.parse(homepage_url).host.sub(/^www\./, '') if homepage_url.present?
