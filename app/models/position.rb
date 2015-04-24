@@ -49,17 +49,17 @@ class Position < ActiveRecord::Base
     state STATE_SYNCHRONIZED
 
     event :synchronize
-    event :fail
+    event :failure
     event :reset
 
     transition on: :synchronize, from: any, to: STATE_SYNCHRONIZED
-    transition on: :fail,        from: any, to: STATE_FAILED
+    transition on: :failure,     from: any, to: STATE_FAILED
     transition on: :reset,       from: any, to: STATE_PENDING
 
-    after_failure on: :synchronize, do: :fail!
-    before_transition on: [:fail, :reset] do |p| p.synchronized_at = nil end
-    before_transition on: :synchronize    do |p| p.synchronized_at = Time.zone.now end
-    before_transition on: :synchronize,   do: :perform_synchronization
+    after_failure on: :synchronize, do: :failure!
+    before_transition on: [:failure, :reset] do |p| p.synchronized_at = nil end
+    before_transition on: :synchronize  do |p| p.synchronized_at = Time.zone.now end
+    before_transition on: :synchronize, do: :perform_synchronization
   end
 
 

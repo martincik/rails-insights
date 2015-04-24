@@ -22,7 +22,7 @@
 .hidden { display: none }
 
 .status_tag {
-  // &.running { background: #d45f53 } // red
+  &.failed { background: #d45f53 } // red
   // &.pending { background: #e29b20 } // orange
   &.synchronized { background: #8daa92 } // green
 }
