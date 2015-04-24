@@ -15,4 +15,10 @@ ActiveAdmin.register Portal do
     column :updated_at
     actions
   end
+
+  sidebar :stats, only: :show do
+    attributes_table_for portal do
+      row :positions do link_to(portal.positions.size, admin_positions_path('q[portal_id_eq]' => portal.id)) end
+    end
+  end
 end

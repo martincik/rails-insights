@@ -43,4 +43,9 @@ ActiveAdmin.register Company do
     end if company.positions.any?
   end
 
+  sidebar :stats, only: :show do
+    attributes_table_for company do
+      row :positions do link_to(company.positions.size, admin_positions_path('q[company_id_eq]' => company.id)) end
+    end
+  end
 end

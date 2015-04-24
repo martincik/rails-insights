@@ -47,6 +47,20 @@ ActiveAdmin.register Position do
     end
   end
 
+  sidebar :company, only: :show, if: -> { position.company.present? } do
+    attributes_table_for position.company.decorate do
+      row :name do |company| auto_link company, company.name end
+      row :homepage
+      row :logo_image
+    end
+  end
+
+  sidebar :portal, only: :show, if: -> { position.portal.present? } do
+    attributes_table_for position.portal.decorate do
+      row :name do |portal| auto_link portal, portal.name end
+      row :homepage, sortable: :url
+    end
+  end
 
   action_item :synchronize, only: [:show, :edit] do
     link_to 'Synchronize', synchronize_admin_position_path(resource), method: :put if resource.can_synchronize?
