@@ -26,10 +26,11 @@ class Position < ActiveRecord::Base
   extend Enumerize
 
   STATE_PENDING = 'pending'
+  STATE_FAILED = 'failed'
   STATE_SYNCHRONIZED = 'synchronized'
 
   def self.states
-    [STATE_PENDING, STATE_SYNCHRONIZED]
+    [STATE_PENDING, STATE_FAILED, STATE_SYNCHRONIZED]
   end
 
   enumerize :state, in: states, default: STATE_PENDING, predicates: false, scope: true
@@ -44,17 +45,21 @@ class Position < ActiveRecord::Base
 
   state_machine initial: STATE_PENDING do
     state STATE_PENDING
+    state STATE_FAILED
     state STATE_SYNCHRONIZED
 
     event :synchronize
+    event :fail
     event :reset
 
-    transition on: :synchronize, from: [STATE_PENDING, STATE_SYNCHRONIZED], to: STATE_SYNCHRONIZED
-    transition on: :reset, from: any, to: STATE_PENDING
+    transition on: :synchronize, from: any, to: STATE_SYNCHRONIZED
+    transition on: :fail,        from: any, to: STATE_FAILED
+    transition on: :reset,       from: any, to: STATE_PENDING
 
-    before_transition on: :synchronize, do: :perform_synchronization
-    before_transition on: :synchronize  do |p| p.synchronized_at = Time.zone.now end
-    before_transition on: :reset        do |p| p.synchronized_at = nil end
+    after_failure on: :synchronize, do: :fail!
+    before_transition on: [:fail, :reset] do |p| p.synchronized_at = nil end
+    before_transition on: :synchronize    do |p| p.synchronized_at = Time.zone.now end
+    before_transition on: :synchronize,   do: :perform_synchronization
   end
 
 

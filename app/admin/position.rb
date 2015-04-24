@@ -8,6 +8,7 @@ ActiveAdmin.register Position do
 
   scope :all, default: true
   scope :pending      do |positions| positions.with_state(Position::STATE_PENDING) end
+  scope :failed       do |positions| positions.with_state(Position::STATE_FAILED) end
   scope :synchronized do |positions| positions.with_state(Position::STATE_SYNCHRONIZED) end
 
   index do

@@ -7,6 +7,7 @@ class SyncPositionJob < ActiveJob::Base
       crawler.run
     rescue Crawler::CrawlerError => e
       logger.debug(e.message)
+      position.fail! # mark sync as failed
     end
   end
 end
