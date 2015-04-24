@@ -1,9 +1,10 @@
-class SyncPositionJob < ActiveJob::Base
+class PositionSyncJob < ActiveJob::Base
   queue_as :default
 
   def perform(position, logger: Rails.logger)
     begin
-      crawler = Crawler::Position::Factory.new(position.domain).instance(position)
+      factory = Crawler::Position::Factory.new(position.domain)
+      crawler = factory.instance(position)
       crawler.run
     rescue Crawler::CrawlerError => e
       logger.debug(e.message)

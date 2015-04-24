@@ -73,6 +73,6 @@ class Position < ActiveRecord::Base
   end
 
   def perform_synchronization
-    SyncPositionJob.perform_later(self)
+    PositionSyncJob.perform_later(self)
   end
 end
