@@ -1,9 +1,15 @@
 module Crawler
 
-  class UnknownPortalError < RuntimeError
+  class CrawlerError < RuntimeError
   end
 
-  class UnknownCrawlerError < RuntimeError
+  class UnknownPortalError < CrawlerError
+  end
+
+  class UnknownCrawlerError < CrawlerError
+  end
+
+  class NotImplementedError < CrawlerError
   end
 
 end
