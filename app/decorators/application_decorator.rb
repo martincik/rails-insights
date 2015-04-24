@@ -26,7 +26,7 @@ class ApplicationDecorator < Draper::Decorator
   end
 
   def url
-    link_to_unless object.url.blank?, object.url, object.url, target: '_blank' if object.url.present?
+    link_to object.url, object.url, target: '_blank' if object.url.present?
   end
 
   protected
