@@ -17,7 +17,6 @@ ActiveAdmin.register Position do
     column :identifier
     column :title
     column :description, sortable: :description_text
-    column :how_to_apply
     column :url
     column :location
     column :salary

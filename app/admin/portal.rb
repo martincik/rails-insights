@@ -10,8 +10,7 @@ ActiveAdmin.register Portal do
     selectable_column
     column :id do |portal| auto_link portal, portal.id end
     column :name
-    column :url
-    column :domain
+    column :homepage, sortable: :url
     column :created_at
     column :updated_at
     actions
