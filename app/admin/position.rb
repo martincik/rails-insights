@@ -28,6 +28,25 @@ ActiveAdmin.register Position do
     actions
   end
 
+  show do
+    attributes_table do
+      row :identifier
+      row :title
+      row :description_html do |position| raw(position.description_html) end
+      row :how_to_apply     do |position| raw(position.how_to_apply) end
+      row :url do |position| position.url(long: true) end
+      row :location
+      row :salary
+      row :state
+      row :kind
+      row :type
+      row :posted_at
+      row :synchronized_at
+      row :created_at
+      row :updated_at
+    end
+  end
+
 
   action_item :synchronize, only: [:show, :edit] do
     link_to 'Synchronize', synchronize_admin_position_path(resource), method: :put if resource.can_synchronize?

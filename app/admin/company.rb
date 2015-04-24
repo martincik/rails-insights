@@ -16,4 +16,31 @@ ActiveAdmin.register Company do
     column :updated_at
     actions
   end
+
+  show do
+    attributes_table do
+      row :id
+      row :name
+      row :homepage
+      row :logo_image
+      row :created_at
+      row :updated_at
+    end
+
+    panel "Positions" do
+      table_for company.positions.decorate, i18n: Position do
+        column :id do |position| auto_link position, position.id end
+        column :identifier
+        column :title
+        column :url
+        column :location
+        column :salary
+        column :state
+        column :kind
+        column :posted_at
+        column :synchronized_at
+      end
+    end if company.positions.any?
+  end
+
 end
