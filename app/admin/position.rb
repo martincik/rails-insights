@@ -49,7 +49,7 @@ ActiveAdmin.register Position do
     begin
       Position.where(id: ids).map(&:synchronize!)
       redirect_to :back, notice: I18n.t('flash.positions.synchronize.notice', count: ids.count)
-    rescue StateMachine::InvalidTransition
+    rescue StateMachine::InvalidTransition, Crawler::CrawlerError
       redirect_to :back, alert: I18n.t('flash.positions.synchronize.alert', count: ids.count)
     end
   end
@@ -59,7 +59,7 @@ ActiveAdmin.register Position do
     begin
       Position.where(id: ids).map(&:synchronize!)
       redirect_to :back, notice: I18n.t('flash.positions.synchronize.notice', count: ids.count)
-    rescue StateMachine::InvalidTransition
+    rescue StateMachine::InvalidTransition, Crawler::CrawlerError
       redirect_to :back, alert: I18n.t('flash.positions.synchronize.alert', count: ids.count)
     end
   end
