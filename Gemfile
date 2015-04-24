@@ -13,6 +13,7 @@ gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'draper'
 gem 'enumerize'
 gem 'state_machine'
+gem 'font-awesome-sass'
 gem 'htmlentities', require: false
 gem 'httparty', require: false
 gem 'nokogiri', require: false
