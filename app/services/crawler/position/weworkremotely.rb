@@ -4,7 +4,22 @@ module Crawler
     class Weworkremotely < Base
       def run
         super
-        raise Crawler::NotImplementedError
+        page = html.css('.content')
+        name = page.css('.listing-header-container .company').xpath('text()').text.squish.strip
+
+        @position.transaction do
+          @position.portal  ||= @portal
+          @position.company ||= Company.where(name: name).first_or_create!
+          @position.company.homepage_url = page.css('.listing-header-container a').attr('href').value.strip rescue nil
+          @position.company.logo_url     = page.css('.listing-logo img').attr('src').value.strip rescue nil
+          @position.description_text     = page.css('.listing-container').inner_text.strip
+          @position.description_html     = page.css('.listing-container').inner_html.strip
+          @position.how_to_apply         = page.css('.apply').inner_html.strip
+          @position.title                = page.css('.listing-header-container h1').text.strip
+          @position.location             = page.css('.listing-header-container .location').text.gsub('Headquarters: ', '').strip
+          @position.kind                 = 'remote'
+          @position.save(validate: false)
+        end
       end
     end
 
