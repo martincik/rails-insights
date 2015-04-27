@@ -13,39 +13,52 @@ careers.stackoverflow.com:
 railsjobs.com:
   name: RailsJobs
   url: http://www.railsjobs.com
+  crawler_class: "crawler/position/rails_jobs"
 rubynow.com:
   name: RubyNow Jobs
   url: http://jobs.rubynow.com
+  crawler_class: "crawler/position/rails_jobs"
 indeed.com:
   name: indeed
   url: http://www.indeed.com
+  crawler_class: "crawler/position/indeed"
 linkedin.com:
   name: LinkedIn
   url: https://www.linkedin.com
+  # crawler_class: No RSS, nothing to crawle
 jobsremotely.com:
   name: JobsRemotely.com
   url: https://jobsremotely.com
+  crawler_class: "crawler/position/jobs_remotely"
 odesk.com:
   name: oDesk
   url: https://www.odesk.com
+  crawler_class: "crawler/position/odesk"
 freelancer.com:
   name: freelancer.com
   url: https://www.freelancer.com
+  # crawler_class: No RSS, nothing to crawle
 monster.com:
   name: Monster
   url: http://www.monster.com
+  # crawler_class: No RSS, nothing to crawle
 glassdoor.com:
   name: Glassdoor
   url: http://www.glassdoor.com
+  # crawler_class: No RSS, nothing to crawle
 simplyhired.com:
   name: Simply Hired
   url: http://www.simplyhired.com
+  crawler_class: "crawler/position/simply_hired"
 krop.com:
   name: Krop
   url: http://www.krop.com
+  # crawler_class: No RSS, nothing to crawle
 careerbuilder.co.uk:
   name: Career Builder
   url: http://www.careerbuilder.co.uk
+  # crawler_class: No RSS, nothing to crawle
 rubyweekly.com:
   name: RubyWeekly Newsletter
   url: http://rubyweekly.com
+  crawler_class: "crawler/position/ruby_weekly"
