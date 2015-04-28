@@ -2,8 +2,7 @@ module Crawler
   module Position
 
     class Weworkremotely < Base
-      def run
-        super
+      def crawle!
         page = html.css('.content')
         name = page.css('.listing-header-container .company').xpath('text()').text.squish.strip
 

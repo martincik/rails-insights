@@ -14,15 +14,29 @@ module Crawler
       end
 
       def run
-        return unless html.respond_to?(:css)
+        begin
+          raise Crawler::ContentNotPresentError, "Unable to find desired content at URL: #{postion.url}" unless html.respond_to?(:css)
+          position.begin! # mark sync as started
+          crawle!
+          position.finish! # mark sync as finished
+
+        rescue Crawler::CrawlerError => exception
+          position.failure! # mark sync as failed
+          logger.debug(exception.message)
+          raise exception # re-raise exception
+        end
       end
 
-      def responce
-        @responce ||= HTTParty.get(@position.url)
+      def crawle!
+        raise Crawler::NotImplementedError
+      end
+
+      def response
+        @response ||= HTTParty.get(@position.url)
       end
 
       def html
-        @html ||= dom(responce.body)
+        @html ||= dom(response.body)
       rescue SocketError => e
         logger.error "Error HTTParty: #{e.message}"
       end

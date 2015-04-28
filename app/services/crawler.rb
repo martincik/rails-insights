@@ -12,4 +12,7 @@ module Crawler
   class NotImplementedError < CrawlerError
   end
 
+  class ContentNotPresentError < CrawlerError
+  end
+
 end

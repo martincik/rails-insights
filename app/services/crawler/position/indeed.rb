@@ -1,11 +1,7 @@
 module Crawler
   module Position
 
-    class SimplyHired < Base
-      def run
-        super
-        raise Crawler::NotImplementedError
-      end
+    class Indeed < Base
     end
 
   end
