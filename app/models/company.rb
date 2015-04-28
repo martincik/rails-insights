@@ -21,4 +21,9 @@ class Company < ActiveRecord::Base
   def assign_homepage_domain
     self.homepage_domain = URI.parse(homepage_url).host.sub(/^www\./, '') if homepage_url.present?
   end
+
+  def homepage_url=(value)
+    value = URI.unescape(value) if value.present?
+    write_attribute(:homepage_url, value.presence)
+  end
 end
