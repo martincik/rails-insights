@@ -6,7 +6,9 @@ namespace 'rails_insights' do
 
     desc 'Import position details using crawler'
     task positions: :environment do
-      Position.with_state(Position::STATE_PENDING).find_each.map(&:synchronize!)
+      Position.without_state(Position::STATE_SYNCHRONIZED).find_each do |position|
+        position.perform_synchronization! if position.can_perform_synchronization?
+      end
     end
   end
 

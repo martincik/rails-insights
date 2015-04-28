@@ -63,12 +63,13 @@ ActiveAdmin.register Position do
   end
 
   action_item :synchronize, only: [:show, :edit] do
-    link_to 'Synchronize', synchronize_admin_position_path(resource), method: :put if resource.can_synchronize?
+    link_to 'Synchronize', synchronize_admin_position_path(resource), method: :put if resource.can_perform_synchronization?
   end
 
   member_action :synchronize, method: :put do
-    if resource.can_synchronize?
-      resource.synchronize!
+    resource.perform_synchronization! if resource.can_perform_synchronization?
+
+    if resource.synchronized?
       redirect_to :back, notice: I18n.t('flash.positions.synchronize.notice', count: 1)
     else
       redirect_to :back, alert: I18n.t('flash.positions.synchronize.alert', count: 1)
@@ -77,7 +78,7 @@ ActiveAdmin.register Position do
 
   batch_action :synchronize do |ids|
     begin
-      Position.where(id: ids).map(&:synchronize!)
+      Position.where(id: ids).map(&:perform_synchronization!)
       redirect_to :back, notice: I18n.t('flash.positions.synchronize.notice', count: ids.count)
     rescue StateMachine::InvalidTransition, Crawler::CrawlerError
       redirect_to :back, alert: I18n.t('flash.positions.synchronize.alert', count: ids.count)
@@ -87,7 +88,7 @@ ActiveAdmin.register Position do
   collection_action :crawle, method: :post do
     ids = Position.with_state(Position::STATE_PENDING).limit(15).ids
     begin
-      Position.where(id: ids).map(&:synchronize!)
+      Position.where(id: ids).map(&:perform_synchronization!)
       redirect_to :back, notice: I18n.t('flash.positions.synchronize.notice', count: ids.count)
     rescue StateMachine::InvalidTransition, Crawler::CrawlerError
       redirect_to :back, alert: I18n.t('flash.positions.synchronize.alert', count: ids.count)

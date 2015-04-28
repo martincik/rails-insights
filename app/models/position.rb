@@ -27,10 +27,11 @@ class Position < ActiveRecord::Base
 
   STATE_PENDING = 'pending'
   STATE_FAILED = 'failed'
+  STATE_SYNCHRONIZING = 'synchronizing'
   STATE_SYNCHRONIZED = 'synchronized'
 
   def self.states
-    [STATE_PENDING, STATE_FAILED, STATE_SYNCHRONIZED]
+    [STATE_PENDING, STATE_FAILED, STATE_SYNCHRONIZING, STATE_SYNCHRONIZED]
   end
 
   enumerize :state, in: states, default: STATE_PENDING, predicates: false, scope: true
@@ -46,20 +47,22 @@ class Position < ActiveRecord::Base
   state_machine initial: STATE_PENDING do
     state STATE_PENDING
     state STATE_FAILED
+    state STATE_SYNCHRONIZING
     state STATE_SYNCHRONIZED
 
-    event :synchronize
+    event :begin
+    event :finish
     event :failure
     event :reset
 
-    transition on: :synchronize, from: any, to: STATE_SYNCHRONIZED
-    transition on: :failure,     from: any, to: STATE_FAILED
-    transition on: :reset,       from: any, to: STATE_PENDING
+    transition on: :begin,   from: any, to: STATE_SYNCHRONIZING
+    transition on: :finish,  from: any, to: STATE_SYNCHRONIZED
+    transition on: :failure, from: any, to: STATE_FAILED
+    transition on: :reset,   from: any, to: STATE_PENDING
 
-    after_failure on: :synchronize, do: :failure!
+    after_failure on: :begin, do: :failure!
     before_transition on: [:failure, :reset] do |p| p.synchronized_at = nil end
-    before_transition on: :synchronize  do |p| p.synchronized_at = Time.zone.now end
-    before_transition on: :synchronize, do: :perform_synchronization
+    before_transition on: :finish  do |p| p.synchronized_at = Time.zone.now end
   end
 
 
@@ -72,7 +75,9 @@ class Position < ActiveRecord::Base
     write_attribute(:kind, value.presence)
   end
 
-  def perform_synchronization
+  def perform_synchronization!
     PositionSyncJob.perform_later(self)
   end
+
+  alias_method :can_perform_synchronization?, :can_begin?
 end
