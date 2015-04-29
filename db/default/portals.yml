@@ -58,7 +58,3 @@ careerbuilder.co.uk:
   name: Career Builder
   url: http://www.careerbuilder.co.uk
   # crawler_class: No RSS, nothing to crawle
-rubyweekly.com:
-  name: RubyWeekly Newsletter
-  url: http://rubyweekly.com
-  crawler_class: "crawler/position/ruby_weekly"
