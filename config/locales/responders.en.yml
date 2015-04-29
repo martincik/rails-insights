@@ -16,6 +16,6 @@ en:
           one: "Position was successfully synchronized."
           other: "%{count} positions were successfully synchronized."
         alert:
-          one: "Synchronization of position failed."
-          other: "Synchronization of %{count} positions failed."
+          one: "Synchronization of position failed (error: %{reason})."
+          other: "Synchronization of %{count} positions failed (error: %{reason})."
 

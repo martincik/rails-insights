@@ -72,7 +72,7 @@ ActiveAdmin.register Position do
     if resource.synchronized?
       redirect_to :back, notice: I18n.t('flash.positions.synchronize.notice', count: 1)
     else
-      redirect_to :back, alert: I18n.t('flash.positions.synchronize.alert', count: 1)
+      redirect_to :back, alert: I18n.t('flash.positions.synchronize.alert', count: 1, reason: 'Crawler raised an exception')
     end
   end
 
@@ -80,8 +80,8 @@ ActiveAdmin.register Position do
     begin
       Position.where(id: ids).map(&:perform_synchronization!)
       redirect_to :back, notice: I18n.t('flash.positions.synchronize.notice', count: ids.count)
-    rescue StateMachine::InvalidTransition, Crawler::CrawlerError
-      redirect_to :back, alert: I18n.t('flash.positions.synchronize.alert', count: ids.count)
+    rescue StateMachine::InvalidTransition, Crawler::CrawlerError => e
+      redirect_to :back, alert: I18n.t('flash.positions.synchronize.alert', count: ids.count, reason: e.message)
     end
   end
 
@@ -90,8 +90,8 @@ ActiveAdmin.register Position do
     begin
       Position.where(id: ids).map(&:perform_synchronization!)
       redirect_to :back, notice: I18n.t('flash.positions.synchronize.notice', count: ids.count)
-    rescue StateMachine::InvalidTransition, Crawler::CrawlerError
-      redirect_to :back, alert: I18n.t('flash.positions.synchronize.alert', count: ids.count)
+    rescue StateMachine::InvalidTransition, Crawler::CrawlerError => e
+      redirect_to :back, alert: I18n.t('flash.positions.synchronize.alert', count: ids.count, reason: e.message)
     end
   end
 end
