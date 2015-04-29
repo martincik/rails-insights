@@ -14,8 +14,8 @@ module Crawler
           @position.description_text     = page.css('.column.main').inner_text.strip
           @position.description_html     = page.css('.column.main').inner_html.strip
           @position.how_to_apply         = page.css('.column.sidebar .highlighted p').inner_html.strip
-          @position.title                = page.css('h1').text.strip
-          @position.kind, @position.location = page.css('.supertitle').text.split('/').map(&:strip)
+          @position.title                = page.css('h1').text.strip.presence
+          @position.kind, @position.location = page.css('.supertitle').text.split('/').map(&:strip).map(&:presence)
           @position.save(validate: false)
         end
       end

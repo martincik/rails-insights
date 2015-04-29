@@ -17,9 +17,9 @@ module Crawler
           @position.description_text     = page.css('.oDescriptionWrapper').inner_text.strip
           @position.description_html     = page.css('.oDescriptionWrapper').inner_html.strip
           @position.how_to_apply         = 'Apply using oDesk'
-          @position.title                = page.css('.oJobInfo h1').text.strip
+          @position.title                = page.css('.oJobInfo h1').text.strip.presence
           @position.location             = 'Home office'
-          @position.kind                 = 'remote' if @position.description_text.include?('remote')
+          @position.kind                 = 'remote' if @position.description_text.include?('remote').presence
           @position.save(validate: false)
         end
       end

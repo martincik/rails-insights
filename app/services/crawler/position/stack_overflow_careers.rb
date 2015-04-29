@@ -14,9 +14,9 @@ module Crawler
           @position.description_text     = page.css('.h4, .description').inner_text.strip
           @position.description_html     = page.css('.h4, .description').inner_html.strip
           @position.how_to_apply         = 'Apply using StackOverflow'
-          @position.title                = page.css('.jobdetail h1').text.strip
-          @position.location             = page.css('.jobdetail .location').text.gsub(' (allows remote)', '').strip
-          @position.kind                 = 'remote' if page.css('.jobdetail .location').text.downcase.include?('remote')
+          @position.title                = page.css('.jobdetail h1').text.strip.presence
+          @position.location             = page.css('.jobdetail .location').text.gsub('(allows remote)', '').strip.presence
+          @position.kind                 = 'remote' if page.css('.jobdetail .location').text.downcase.include?('remote').presence
           @position.save(validate: false)
         end
       end
