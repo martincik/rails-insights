@@ -16,7 +16,7 @@ module Crawler
           @position.how_to_apply         = page.css('#show_application_instructions').to_s.strip rescue nil
           @position.title                = page.css('h2#headline').xpath('text()').text.squish.strip.presence
           @position.location             = page.css('h3#location').text.squish.strip.presence rescue nil
-          # @position.kind                 = page.css('.job-type span').text.squish.strip.presence rescue nil
+          @position.kind                 = 'remote' if @position.title.downcase.include?('remote')
           @position.save(validate: false)
         end
       end
