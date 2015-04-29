@@ -17,7 +17,7 @@ railsjobs.com:
 rubynow.com:
   name: RubyNow Jobs
   url: http://jobs.rubynow.com
-  crawler_class: "crawler/position/rails_jobs"
+  crawler_class: "crawler/position/ruby_now"
 indeed.com:
   name: indeed
   url: http://www.indeed.com
