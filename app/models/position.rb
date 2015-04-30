@@ -37,6 +37,16 @@ class Position < ActiveRecord::Base
   enumerize :state, in: states, default: STATE_PENDING, predicates: false, scope: true
 
 
+  VISIBILITY_PUBLIC  = 'public'
+  VISIBILITY_PRIVATE = 'private'
+
+  def self.visibilities
+    [VISIBILITY_PUBLIC, VISIBILITY_PRIVATE]
+  end
+
+  enumerize :visibility, in: visibilities, default: VISIBILITY_PUBLIC, predicates: true, scope: true
+
+
   alias_attribute :description, :description_text
 
 

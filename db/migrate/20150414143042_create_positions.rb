@@ -11,6 +11,7 @@ class CreatePositions < ActiveRecord::Migration
       t.string :url
       t.string :location
       t.string :salary
+      t.string :visibility
       t.string :state, default: 'pending'
       t.string :kind
       t.string :type

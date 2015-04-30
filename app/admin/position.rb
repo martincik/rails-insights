@@ -19,6 +19,7 @@ ActiveAdmin.register Position do
     column :location
     column :salary
     column :state
+    column :visibility
     column :kind
     column :posted_at
     column :synchronized_at
@@ -37,6 +38,7 @@ ActiveAdmin.register Position do
       row :url do |position| position.url(long: true) end
       row :location
       row :salary
+      row :visibility
       row :state
       row :kind
       row :type

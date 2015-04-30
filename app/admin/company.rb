@@ -36,6 +36,7 @@ ActiveAdmin.register Company do
         column :location
         column :salary
         column :state
+        column :visibility
         column :kind
         column :posted_at
         column :synchronized_at
