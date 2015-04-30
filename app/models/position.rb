@@ -54,6 +54,9 @@ class Position < ActiveRecord::Base
   belongs_to :portal
 
 
+  scope :last_failed, -> { with_state(STATE_FAILED).order(created_at: :desc) }
+
+
   state_machine initial: STATE_PENDING do
     state STATE_PENDING
     state STATE_FAILED

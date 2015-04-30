@@ -30,6 +30,8 @@ en:
       login_details: Login details
       server_stats: Server stats
       last_logged_in_users: Last logged in users
+      last_comments: Last comments
+      last_failed_synchronizations: Last failed synchronizations
       stats: Stats
       trends:  Trends
       graphs:  Graphs
