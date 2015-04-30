@@ -1,4 +1,9 @@
 ActiveAdmin.register User do
+  decorate_with UserDecorator
+
+  menu priority: 100
+  actions :all, except: [:new]
+
   permit_params :email, :password, :password_confirmation
 
   index do
@@ -17,7 +22,7 @@ ActiveAdmin.register User do
   filter :created_at
 
   form do |f|
-    f.inputs "Admin Details" do
+    f.inputs :user_details do
       f.input :email
       f.input :password
       f.input :password_confirmation
