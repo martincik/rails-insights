@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20150430075323) do
   add_index "positions", ["portal_id"], name: "index_positions_on_portal_id", using: :btree
 
   create_table "users", force: :cascade do |t|
+    t.string   "name",                default: "", null: false
     t.string   "email",               default: "", null: false
     t.string   "encrypted_password",  default: "", null: false
     t.datetime "remember_created_at"
