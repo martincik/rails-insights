@@ -1,5 +1,6 @@
 ActiveAdmin.register Company do
   decorate_with CompanyDecorator
+  config.comments = true
 
   menu priority: 20
   actions :all, except: [:new]

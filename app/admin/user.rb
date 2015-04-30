@@ -1,5 +1,6 @@
 ActiveAdmin.register User do
   decorate_with UserDecorator
+  config.comments = false
 
   menu priority: 100
   actions :all, except: [:new]

@@ -1,5 +1,6 @@
 ActiveAdmin.register Portal do
   decorate_with PortalDecorator
+  config.comments = false
 
   menu priority: 10
   actions :all

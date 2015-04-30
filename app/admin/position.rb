@@ -1,5 +1,6 @@
 ActiveAdmin.register Position do
   decorate_with PositionDecorator
+  config.comments = true
 
   menu priority: 30
   actions :all, except: [:new]
