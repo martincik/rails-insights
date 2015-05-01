@@ -18,6 +18,7 @@ gem 'font-awesome-sass'
 gem 'htmlentities', require: false
 gem 'httparty', require: false
 gem 'nokogiri', require: false
+gem 'newrelic_rpm'
 
 # asset gems
 gem 'rails-assets-selectize'
@@ -41,5 +42,4 @@ end
 group :production, :staging do
   gem 'unicorn'
   gem 'rails_12factor'
-  gem 'newrelic_rpm'
 end
