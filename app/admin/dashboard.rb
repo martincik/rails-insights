@@ -22,6 +22,16 @@ ActiveAdmin.register_page "Dashboard" do
       end
 
       column do
+        panel I18n.t("active_admin.panels.server_stats") do
+          div do
+            text_node %{<iframe src="#{Rails.application.secrets.server_widget}" style="width:100%; height:300px" scrolling="yes" frameborder="no"></iframe>}.html_safe
+          end
+        end
+      end
+    end
+
+    columns do
+      column do
         panel I18n.t("active_admin.panels.last_comments")  do
           table_for ActiveAdmin::Comment.order(created_at: :desc).limit(10) do
             column :created_at
