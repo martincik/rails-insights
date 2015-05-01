@@ -43,6 +43,8 @@ ActiveAdmin.register Company do
         column :synchronized_at
       end
     end if company.positions.any?
+
+    active_admin_comments
   end
 
   sidebar :stats, only: :show do

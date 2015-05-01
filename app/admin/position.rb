@@ -48,6 +48,8 @@ ActiveAdmin.register Position do
       row :created_at
       row :updated_at
     end
+
+    active_admin_comments
   end
 
   sidebar :company, only: :show, if: -> { position.company.present? } do
