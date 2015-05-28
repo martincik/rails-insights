@@ -24,6 +24,7 @@ ActiveAdmin.register Position do
     column :kind
     column :posted_at
     column :synchronized_at
+    column :archived_at
     column :created_at
     column :updated_at
     column :url
@@ -45,6 +46,7 @@ ActiveAdmin.register Position do
       row :type
       row :posted_at
       row :synchronized_at
+      row :archived_at
       row :created_at
       row :updated_at
     end

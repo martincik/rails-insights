@@ -77,5 +77,6 @@ en:
         how_to_apply: How to apply?
         location: Location
         salary: Salary
-        posted_at: Posted at
-        synchronized_at: Synchronized at
+        posted_at: Posted
+        synchronized_at: Synchronized
+        archived_at: Archived

@@ -26,6 +26,7 @@
 
 class Position < ActiveRecord::Base
   extend Enumerize
+  include Switchable
 
   STATE_PENDING = 'pending'
   STATE_FAILED = 'failed'
@@ -50,6 +51,7 @@ class Position < ActiveRecord::Base
 
 
   alias_attribute :description, :description_text
+  switchable :archived_at
 
 
   belongs_to :company, autosave: true
