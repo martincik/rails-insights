@@ -13,6 +13,7 @@
 #  url              :string
 #  location         :string
 #  salary           :string
+#  visibility       :string
 #  state            :string           default("pending")
 #  kind             :string
 #  type             :string
@@ -20,6 +21,7 @@
 #  synchronized_at  :datetime
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  archived_at      :datetime
 #
 
 class Position < ActiveRecord::Base
