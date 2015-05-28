@@ -1,8 +1,8 @@
-module Crawler
+module Scraper
   module Position
 
     class RailsJobs < Base
-      def crawle!
+      def scrape!
         page = html.css('#job-listing')
         name = page.css('.content-well').first.css('h2 a').text.squish.strip.presence rescue nil
 

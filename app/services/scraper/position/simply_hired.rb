@@ -1,8 +1,8 @@
-module Crawler
+module Scraper
   module Position
 
     class SimplyHired < Base
-      def crawle!
+      def scrape!
         page = html.css('#job_detail')
         name = page.css('table.info-table tr.company td:last').text.squish.strip.presence rescue nil
 

@@ -1,8 +1,8 @@
-module Crawler
+module Scraper
   module Position
 
     class Indeed < Base
-      def crawle!
+      def scrape!
         page = html.css('table:last tr:first')
         name = page.css('#job_header .company').text.squish.strip.presence rescue nil
 

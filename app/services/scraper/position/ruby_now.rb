@@ -1,8 +1,8 @@
-module Crawler
+module Scraper
   module Position
 
     class RubyNow < Base
-      def crawle!
+      def scrape!
         page = html.css('#job')
         name = page.css('h2#headline a').text.squish.strip.presence rescue nil
 

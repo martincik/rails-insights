@@ -1,4 +1,4 @@
-module Crawler
+module Scraper
   module Position
 
     class Factory
@@ -9,9 +9,9 @@ module Crawler
       end
 
       def instance
-        raise Crawler::UnknownPortalError, "Unable to find portal for domain #{position.domain}" if portal.nil?
-        raise Crawler::UnknownCrawlerError, "Unknown crawler for portal #{portal.name}" if portal.crawler_class.nil?
-        @portal.crawler_class.camelize.constantize.new(position, portal: portal)
+        raise Scraper::UnknownPortalError, "Unable to find portal for domain #{position.domain}" if portal.nil?
+        raise Scraper::UnknownScraperError, "Unknown scraper for portal #{portal.name}" if portal.scraper_class.nil?
+        @portal.scraper_class.camelize.constantize.new(position, portal: portal)
       end
 
       protected

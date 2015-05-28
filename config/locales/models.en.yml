@@ -70,7 +70,7 @@ en:
         logo_image: Logo
 
       portal:
-        crawler_class: Crawler
+        scraper_class: Scraper
 
       position:
         identifier: Identifier

@@ -1,60 +1,60 @@
 weworkremotely.com:
   name: We Work Remotely
   url: https://weworkremotely.com
-  crawler_class: "crawler/position/weworkremotely"
+  scraper_class: "scraper/position/weworkremotely"
 jobs.github.com:
   name: GitHub Jobs
   url: https://jobs.github.com
-  crawler_class: "crawler/position/github_jobs"
+  scraper_class: "scraper/position/github_jobs"
 careers.stackoverflow.com:
   name: Stack Overflow Careers
   url: http://careers.stackoverflow.com
-  crawler_class: "crawler/position/stack_overflow_careers"
+  scraper_class: "scraper/position/stack_overflow_careers"
 railsjobs.com:
   name: RailsJobs
   url: http://www.railsjobs.com
-  crawler_class: "crawler/position/rails_jobs"
+  scraper_class: "scraper/position/rails_jobs"
 rubynow.com:
   name: RubyNow Jobs
   url: http://jobs.rubynow.com
-  crawler_class: "crawler/position/ruby_now"
+  scraper_class: "scraper/position/ruby_now"
 indeed.com:
   name: indeed
   url: http://www.indeed.com
-  crawler_class: "crawler/position/indeed"
+  scraper_class: "scraper/position/indeed"
 linkedin.com:
   name: LinkedIn
   url: https://www.linkedin.com
-  # crawler_class: No RSS, nothing to crawle
+  # scraper_class: No RSS, nothing to scrape
 jobsremotely.com:
   name: JobsRemotely.com
   url: https://jobsremotely.com
-  crawler_class: "crawler/position/jobs_remotely"
+  scraper_class: "scraper/position/jobs_remotely"
 odesk.com:
   name: oDesk
   url: https://www.odesk.com
-  crawler_class: "crawler/position/odesk"
+  scraper_class: "scraper/position/odesk"
 freelancer.com:
   name: freelancer.com
   url: https://www.freelancer.com
-  # crawler_class: No RSS, nothing to crawle
+  # scraper_class: No RSS, nothing to scrape
 monster.com:
   name: Monster
   url: http://www.monster.com
-  # crawler_class: No RSS, nothing to crawle
+  # scraper_class: No RSS, nothing to scrape
 glassdoor.com:
   name: Glassdoor
   url: http://www.glassdoor.com
-  # crawler_class: No RSS, nothing to crawle
+  # scraper_class: No RSS, nothing to scrape
 simplyhired.com:
   name: Simply Hired
   url: http://www.simplyhired.com
-  crawler_class: "crawler/position/simply_hired"
+  scraper_class: "scraper/position/simply_hired"
 krop.com:
   name: Krop
   url: http://www.krop.com
-  # crawler_class: No RSS, nothing to crawle
+  # scraper_class: No RSS, nothing to scrape
 careerbuilder.co.uk:
   name: Career Builder
   url: http://www.careerbuilder.co.uk
-  # crawler_class: No RSS, nothing to crawle
+  # scraper_class: No RSS, nothing to scrape

@@ -1,14 +1,14 @@
 class PositionSyncJob < ActiveJob::Base
   queue_as :default
 
-  rescue_from(Crawler::CrawlerError) do |exception|
+  rescue_from(Scraper::ScraperError) do |exception|
     Rails.logger.debug(exception.message)
     @position.failure!
   end
 
   def perform(position)
     @position = position
-    crawler = Crawler::Position::Factory.new(@position).instance
-    crawler.run
+    scraper = Scraper::Position::Factory.new(@position).instance
+    scraper.run
   end
 end

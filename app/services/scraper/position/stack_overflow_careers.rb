@@ -1,8 +1,8 @@
-module Crawler
+module Scraper
   module Position
 
     class StackOverflowCareers < Base
-      def crawle!
+      def scrape!
         page = html.css('#jobdetailpage')
         name = page.css('a.employer').xpath('text()').text.squish.strip.presence rescue nil
 

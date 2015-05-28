@@ -1,8 +1,8 @@
-module Crawler
+module Scraper
   module Position
 
     class JobsRemotely < Base
-      def crawle!
+      def scrape!
         page = html.css('body')
         name = page.css('.well.col-sm-4 .col-sm-12 h3 a').xpath('text()').text.squish.strip.presence rescue nil
 

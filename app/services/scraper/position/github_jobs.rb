@@ -1,8 +1,8 @@
-module Crawler
+module Scraper
   module Position
 
     class GithubJobs < Base
-      def crawle!
+      def scrape!
         page = html.css('#page .inner')
         name = page.css('.column.sidebar .logo .inner h2').xpath('text()').text.squish.strip.presence rescue nil
 

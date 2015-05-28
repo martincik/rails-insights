@@ -6,8 +6,8 @@ ActiveAdmin.register_page "Dashboard" do
     link_to "Heroku", "https://dashboard.heroku.com/apps/rails-insights/resources", target: '_new'
   end
 
-  action_item :crawle do
-    link_to "Run crawler", crawle_admin_positions_path, method: :post
+  action_item :scrape do
+    link_to "Run scraper", scrape_admin_positions_path, method: :post
   end
 
   content title: proc { I18n.t("active_admin.dashboard") } do

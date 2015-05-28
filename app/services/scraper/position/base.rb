@@ -1,7 +1,7 @@
 require 'httparty'
 require 'nokogiri'
 
-module Crawler
+module Scraper
   module Position
 
     class Base
@@ -15,20 +15,20 @@ module Crawler
 
       def run
         begin
-          raise Crawler::ContentNotPresentError, "Unable to find desired content at URL: #{postion.url}" unless html.respond_to?(:css)
+          raise Scraper::ContentNotPresentError, "Unable to find desired content at URL: #{postion.url}" unless html.respond_to?(:css)
           position.begin! # mark sync as started
-          crawle!
+          scrape!
           position.finish! # mark sync as finished
 
-        rescue Crawler::CrawlerError => exception
+        rescue Scraper::ScraperError => exception
           position.failure! # mark sync as failed
           logger.debug(exception.message)
           raise exception # re-raise exception
         end
       end
 
-      def crawle!
-        raise Crawler::NotImplementedError
+      def scrape!
+        raise Scraper::NotImplementedError
       end
 
       def response

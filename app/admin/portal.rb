@@ -5,14 +5,14 @@ ActiveAdmin.register Portal do
   menu priority: 10
   actions :all
 
-  permit_params :name, :url, :domain, :crawler_class
+  permit_params :name, :url, :domain, :scraper_class
 
   index do
     selectable_column
     column :id do |portal| auto_link portal, portal.id end
     column :name
     column :homepage, sortable: :url
-    column :crawler, sortable: :crawler_class do |portal| portal.crawler_implemented end
+    column :scraper, sortable: :scraper_class do |portal| portal.scraper_implemented end
     column :created_at
     column :updated_at
     actions

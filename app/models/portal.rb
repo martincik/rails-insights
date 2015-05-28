@@ -6,7 +6,7 @@
 #  name          :string
 #  url           :string
 #  domain        :string
-#  crawler_class :string
+#  scraper_class :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #

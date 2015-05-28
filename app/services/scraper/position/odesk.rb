@@ -1,8 +1,8 @@
-module Crawler
+module Scraper
   module Position
 
     class Odesk < Base
-      def crawle!
+      def scrape!
         page = html.css('article.oJob')
         name = page.css('.oClientFacts .oTitle a').text.strip.presence rescue nil
 
