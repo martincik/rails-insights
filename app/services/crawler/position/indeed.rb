@@ -4,7 +4,7 @@ module Crawler
     class Indeed < Base
       def crawle!
         page = html.css('table:last tr:first')
-        name = page.css('.cmp_info .cmp_title').text.squish.strip.presence rescue nil
+        name = page.css('#job_header .company').text.squish.strip.presence rescue nil
 
         @position.transaction do
           @position.portal  ||= @portal
