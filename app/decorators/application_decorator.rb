@@ -1,5 +1,6 @@
 class ApplicationDecorator < Draper::Decorator
   include Draper::LazyHelpers
+  include FontAwesome::Sass::Rails::ViewHelpers
 
   def self.collection_decorator_class
     PaginationDecorator
