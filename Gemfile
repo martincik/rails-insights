@@ -19,6 +19,7 @@ gem 'htmlentities', require: false
 gem 'httparty', require: false
 gem 'nokogiri', require: false
 gem 'newrelic_rpm'
+gem 'rollbar'
 
 # asset gems
 gem 'rails-assets-selectize'
