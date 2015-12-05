@@ -8,7 +8,7 @@ namespace 'rails_insights' do
 
       desc 'Import positions from RSS feed'
       task positions: :environment do
-        Portal.where.not(feed_url: nil).find_each do |portal|
+        Portal.where.not(feed_url: nil).find_each(batch_size: 5) do |portal|
           begin
             import = Import::Feed::Positions.new(portal.feed_url)
             import.run

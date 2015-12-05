@@ -6,7 +6,7 @@ namespace 'rails_insights' do
 
     desc 'Import position details using scraper'
     task positions: :environment do
-      Position.without_state(Position::STATE_SYNCHRONIZED).find_each do |position|
+      Position.without_state(Position::STATE_SYNCHRONIZED).find_each(batch_size: 50) do |position|
         begin
           position.perform_synchronization! if position.can_perform_synchronization?
         rescue => exception
