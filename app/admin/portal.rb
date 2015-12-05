@@ -1,6 +1,6 @@
 ActiveAdmin.register Portal do
   decorate_with PortalDecorator
-  config.comments = false
+  # config.comments = false
 
   menu priority: 10
   actions :all
@@ -12,6 +12,7 @@ ActiveAdmin.register Portal do
     column :id do |portal| auto_link portal, portal.id end
     column :name
     column :homepage, sortable: :url
+    column :feed_url
     column :scraper, sortable: :scraper_class do |portal| portal.scraper_implemented end
     column :created_at
     column :updated_at

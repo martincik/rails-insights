@@ -9,7 +9,7 @@ class PortalDecorator < ApplicationDecorator
     check_box_tag nil, nil, object.scraper_class.present?, disabled: true
   end
 
-  def feed_url
-    link_to object.feed_url, object.feed_url, target: '_blank' if object.feed_url.present?
+  def feed_url(long: false)
+    link_to long ? object.feed_url : icon('external-link'), object.feed_url, target: '_blank' if object.feed_url.present?
   end
 end
