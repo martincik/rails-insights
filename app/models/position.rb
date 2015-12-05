@@ -92,6 +92,10 @@ class Position < ActiveRecord::Base
     write_attribute(:kind, value.presence)
   end
 
+  def related_to?(keyword)
+    title.to_s =~ /#{keyword}/i || description.to_s =~ /#{keyword}/i
+  end
+
   def perform_synchronization!
     PositionSyncJob.perform_later(self)
   end

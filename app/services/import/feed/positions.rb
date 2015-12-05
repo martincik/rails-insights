@@ -21,7 +21,7 @@ module Import
               position.description_text = sanitize(entry.summary || entry.content)
               position.description_html = entry.summary || entry.content
               position.posted_at = entry.published || entry.updated
-              position.save(validate: false)
+              position.save(validate: false) if position.related_to?('rails') || position.related_to?('ruby')
             end
           end
         end
