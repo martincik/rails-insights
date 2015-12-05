@@ -12,7 +12,7 @@ ActiveAdmin.register Portal do
     column :id do |portal| auto_link portal, portal.id end
     column :name
     column :homepage, sortable: :url
-    column :feed_url
+    column :feed_url, sortable: :feed_url do |portal| portal.feed_url(long: false) end
     column :scraper, sortable: :scraper_class do |portal| portal.scraper_implemented end
     column :created_at
     column :updated_at
