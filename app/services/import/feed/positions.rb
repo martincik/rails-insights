@@ -13,9 +13,10 @@ module Import
       end
 
       def run
+        portal = Portal.find_by!(feed_url: @feed_url)
         Position.transaction do
           feed.entries.reverse.each do |entry|
-            position = Position.where(url: entry.url).first_or_initialize
+            position = portal.positions.where(url: entry.url).first_or_initialize
             if position.new_record?
               position.title = sanitize(entry.title)
               position.description_text = sanitize(entry.summary || entry.content)
