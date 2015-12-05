@@ -1,6 +1,5 @@
 ruby '2.1.5'
 source 'https://rubygems.org'
-source 'https://rails-assets.org'
 
 gem 'rails', '~> 4.2'
 gem 'pg'
@@ -15,14 +14,16 @@ gem 'draper'
 gem 'enumerize'
 gem 'state_machine'
 gem 'font-awesome-sass'
+gem 'bootstrap-sass', '~> 3.3'
 gem 'htmlentities', require: false
 gem 'httparty', require: false
 gem 'nokogiri', require: false
 gem 'newrelic_rpm'
 gem 'rollbar'
 
-# asset gems
-gem 'rails-assets-selectize'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-selectize'
+end
 
 group :development, :test do
   gem 'web-console', '~> 2.0'

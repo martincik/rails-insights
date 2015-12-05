@@ -15,3 +15,4 @@
 #= require turbolinks
 #= require turbolinks-progress-bar
 #= require selectize
+#= require bootstrap-sprockets
