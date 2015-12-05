@@ -7,7 +7,12 @@ namespace 'rails_insights' do
     desc 'Import position details using scraper'
     task positions: :environment do
       Position.without_state(Position::STATE_SYNCHRONIZED).find_each do |position|
-        position.perform_synchronization! if position.can_perform_synchronization?
+        begin
+          position.perform_synchronization! if position.can_perform_synchronization?
+        rescue => exception
+          Rollbar.error(exception)
+          Rails.logger.debug(exception)
+        end
       end
     end
   end

@@ -8,9 +8,15 @@ namespace 'rails_insights' do
 
       desc 'Import positions from RSS feed'
       task positions: :environment do
-        feed_url = Rails.application.secrets.import_feed_url.presence
-        import = Import::Feed::Positions.new(feed_url)
-        import.run
+        Portal.where.not(feed_url: nil).find_each do |portal|
+          begin
+            import = Import::Feed::Positions.new(portal.feed_url)
+            import.run
+          rescue => exception
+            Rollbar.error(exception)
+            Rails.logger.debug(exception)
+          end
+        end
       end
     end
 

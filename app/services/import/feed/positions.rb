@@ -1,5 +1,3 @@
-require 'open-uri'
-require 'rss'
 require 'htmlentities'
 
 module Import
@@ -16,13 +14,13 @@ module Import
 
       def run
         Position.transaction do
-          rss.items.reverse.each do |item|
-            position = Position.where(url: item.link).first_or_initialize
+          feed.entries.reverse.each do |entry|
+            position = Position.where(url: entry.url).first_or_initialize
             if position.new_record?
-              position.title = sanitize(item.title)
-              position.description_text = sanitize(item.description)
-              position.description_html = item.description
-              position.posted_at = item.date
+              position.title = sanitize(entry.title)
+              position.description_text = sanitize(entry.summary || entry.content)
+              position.description_html = entry.summary || entry.content
+              position.posted_at = entry.published || entry.updated
               position.save(validate: false)
             end
           end
@@ -31,12 +29,8 @@ module Import
 
       protected
 
-      def rss
-        @rss ||= RSS::Parser.parse(feed, false)
-      end
-
       def feed
-        @feed ||= open(@feed_url).read
+        @feed ||= Feedjira::Feed.fetch_and_parse(@feed_url)
       end
 
       def sanitizer

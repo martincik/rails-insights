@@ -20,6 +20,7 @@ gem 'httparty', require: false
 gem 'nokogiri', require: false
 gem 'newrelic_rpm'
 gem 'rollbar'
+gem 'feedjira'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-selectize'
