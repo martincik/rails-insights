@@ -22,4 +22,9 @@ class Portal < ActiveRecord::Base
   def assign_domain
     self.domain = URI.parse(url).host.sub(/^www\./, '') if url.present?
   end
+
+  def feed_url=(value)
+    value = URI.parse(URI.encode(value.strip)) if value.present?
+    write_attribute(:feed_url, value)
+  end
 end

@@ -23,7 +23,7 @@ class Company < ActiveRecord::Base
   end
 
   def homepage_url=(value)
-    value = URI.unescape(value) if value.present?
+    value = URI.parse(URI.encode(value.strip)) if value.present?
     write_attribute(:homepage_url, value.presence)
   end
 end
