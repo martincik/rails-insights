@@ -19,3 +19,10 @@ en:
           one: "Synchronization of position failed (error: %{reason})."
           other: "Synchronization of %{count} positions failed (error: %{reason})."
 
+    portals:
+      import_feed:
+        notice:
+          zero: "No positions from portal's feed were imported. Does the feed have any new positions?"
+          one: "%{count} position from portal's feed was successfully imported."
+          other: "%{count} positions from portal's feed were successfully imported."
+        alert: "Positions from portal's feed could not be imported.<br> %{reason}"

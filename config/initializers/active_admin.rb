@@ -231,3 +231,21 @@ ActiveAdmin.setup do |config|
   #
   # config.filters = true
 end
+
+
+
+module ActiveAdmin
+  module Views
+    module Pages
+      class Base < Arbre::HTML::Document
+        def build_flash_messages
+          div class: 'flashes' do
+            flash_messages.each do |type, message|
+              div raw(message), class: "flash flash_#{type}"
+            end
+          end
+        end
+      end
+    end
+  end
+end

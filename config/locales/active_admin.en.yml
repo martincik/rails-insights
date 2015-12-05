@@ -1,5 +1,12 @@
 en:
   active_admin:
+    # grep -r "buttons" * | grep "app/admin"
+    buttons:
+      portal:
+        import_feed: Import positions from feed
+      position:
+        synchronize: Synchronize
+
     # grep -r "batch_action" * | grep "app/admin"
     batch_actions:
       labels:

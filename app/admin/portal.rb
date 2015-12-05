@@ -24,4 +24,20 @@ ActiveAdmin.register Portal do
       row :positions do link_to(portal.positions.size, admin_positions_path('q[portal_id_eq]' => portal.id)) end
     end
   end
+
+
+
+  action_item :import_feed, only: :show, if: -> { resource.feed_url.present? } do
+    link_to I18n.t("active_admin.buttons.portal.import_feed"), [:import_feed, :admin, resource], method: :put
+  end
+
+  member_action :import_feed, method: :put do
+    begin
+      count = Import::Feed::Positions.new(resource.object.feed_url).run
+      redirect_to [:admin, resource], notice: I18n.t("flash.portals.import_feed.notice", count: count)
+    rescue => exception
+      Rollbar.error(exception)
+      redirect_to :back, alert: I18n.t("flash.portals.import_feed.alert", reason: exception.message)
+    end
+  end
 end

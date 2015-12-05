@@ -13,6 +13,7 @@ module Import
       end
 
       def run
+        result = []
         portal = Portal.find_by!(feed_url: @feed_url)
         Position.transaction do
           feed.entries.reverse.each do |entry|
@@ -22,10 +23,14 @@ module Import
               position.description_text = sanitize(entry.summary || entry.content)
               position.description_html = entry.summary || entry.content
               position.posted_at = entry.published || entry.updated
-              position.save(validate: false) if position.related_to?('rails') || position.related_to?('ruby')
+              if position.related_to?('rails') || position.related_to?('ruby')
+                position.save(validate: false)
+                result << position
+              end
             end
           end
         end
+        result.size
       end
 
       protected
