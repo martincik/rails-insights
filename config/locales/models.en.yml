@@ -71,6 +71,7 @@ en:
 
       portal:
         scraper_class: Scraper
+        feed_url: Feed URL
 
       position:
         identifier: Identifier

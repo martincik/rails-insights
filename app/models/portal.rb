@@ -9,6 +9,7 @@
 #  scraper_class :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  feed_url      :string
 #
 
 class Portal < ActiveRecord::Base
